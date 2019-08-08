@@ -1,0 +1,41 @@
+namespace QuickSort
+{
+    public class QSort
+    {
+        public static void QuickSort(int[] array)
+        {
+            Qsort(array, 0, array.Length - 1);
+        }
+
+        private static void Qsort(int[] array, int first, int last)
+        {
+            if (first < last)
+            {
+                int pivot = Sort(array, first, last);    // Finding pivot point
+                Qsort(array, first, pivot - 1);          // Sorting left side
+                Qsort(array, pivot + 1, last);           // Sorting right side
+            }
+        }
+
+        private static int Sort(int[] array, int first, int last)
+        {
+            int temp;                                // "Buffer"
+            int pivot = first; 
+            for (int i = first; i < last; i++)       // Moving bigger nums after pivot
+            {
+                if (array[i] < array[last])    
+                {
+                    temp = array[pivot];   
+                    array[pivot] = array[i];
+                    array[i] = temp;
+                    pivot += 1;
+                }
+            }
+            
+            temp = array[pivot];                    // Setting new pivot
+            array[pivot] = array[last];
+            array[last] = temp;
+            return pivot;
+        }
+    }
+}

@@ -1,0 +1,10 @@
+D:\work\dotnet training\NET.A.2019.Borovsky.01\SortArray\bin\Debug\SortArray.exe.config
+D:\work\dotnet training\NET.A.2019.Borovsky.01\SortArray\bin\Debug\SortArray.exe
+D:\work\dotnet training\NET.A.2019.Borovsky.01\SortArray\bin\Debug\SortArray.pdb
+D:\work\dotnet training\NET.A.2019.Borovsky.01\SortArray\bin\Debug\MergeSort.dll
+D:\work\dotnet training\NET.A.2019.Borovsky.01\SortArray\bin\Debug\QuickSort.dll
+D:\work\dotnet training\NET.A.2019.Borovsky.01\SortArray\obj\Debug\SortArray.csprojAssemblyReference.cache
+D:\work\dotnet training\NET.A.2019.Borovsky.01\SortArray\obj\Debug\SortArray.csproj.CoreCompileInputs.cache
+D:\work\dotnet training\NET.A.2019.Borovsky.01\SortArray\obj\Debug\SortArray.csproj.CopyComplete
+D:\work\dotnet training\NET.A.2019.Borovsky.01\SortArray\obj\Debug\SortArray.exe
+D:\work\dotnet training\NET.A.2019.Borovsky.01\SortArray\obj\Debug\SortArray.pdb

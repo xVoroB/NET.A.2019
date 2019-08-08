@@ -1,0 +1,10 @@
+D:\work\dotnet training\Multi\Multi\bin\Debug\Multi.exe.config
+D:\work\dotnet training\Multi\Multi\bin\Debug\Multi.exe
+D:\work\dotnet training\Multi\Multi\bin\Debug\Multi.pdb
+D:\work\dotnet training\Multi\Multi\bin\Debug\Array.dll
+D:\work\dotnet training\Multi\Multi\bin\Debug\MyArr.netmodule
+D:\work\dotnet training\Multi\Multi\obj\Debug\Multi.csprojAssemblyReference.cache
+D:\work\dotnet training\Multi\Multi\obj\Debug\Multi.csproj.CoreCompileInputs.cache
+D:\work\dotnet training\Multi\Multi\obj\Debug\Multi.csproj.CopyComplete
+D:\work\dotnet training\Multi\Multi\obj\Debug\Multi.exe
+D:\work\dotnet training\Multi\Multi\obj\Debug\Multi.pdb

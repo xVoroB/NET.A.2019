@@ -1,0 +1,59 @@
+namespace MergeSort
+{
+    public class MSort
+    {
+        public static void MergeSort(int[] arr)
+        {
+            int last = arr.Length - 1;
+            Sort(arr, 0, last);
+        }
+
+        private static void Sort(int[] arr, int first, int last)
+        {
+            if (first < last)
+            {
+                int mid = (first + last) / 2;       // Middle num
+                Sort(arr, first, mid);              // Dividing array
+                Sort(arr, mid + 1, last);
+                Merge(arr, first, mid, last);       // Sorting and merging
+            }
+        }
+        private static void Merge(int[] arr, int first, int mid, int last)
+        {
+            int count = 0;
+            int[] left = new int[mid - first + 1];      // First subarray 
+            int[] right = new int[last - mid];          // Second subarray
+
+            for (int i = first; i <= mid; i++)          // Filling first subarray
+            {
+                left[count++] = arr[i];
+            }
+            count = 0;
+            for (int i = mid + 1; i <= last; i++)       // Filling second subarray
+            {
+                right[count++] = arr[i];
+            }
+
+            int a = 0, b = 0;
+            for (int i = first; i < first + left.Length + right.Length; i++)    // Merging
+            {
+                if (a == left.Length)
+                {
+                    arr[i] = right[b++];
+                }
+                else if (b == right.Length)
+                {
+                    arr[i] = left[a++];
+                }
+                else if (left[a] > right[b])
+                {
+                    arr[i] = right[b++];
+                }
+                else
+                {
+                    arr[i] = left[a++];
+                }
+            }
+        }
+    }
+}
