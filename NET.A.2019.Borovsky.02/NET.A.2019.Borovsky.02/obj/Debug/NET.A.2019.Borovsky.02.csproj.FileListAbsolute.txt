@@ -1,0 +1,12 @@
+D:\work\dotnet training\NET.A.2019.Borovsky.02\NET.A.2019.Borovsky.02\bin\Debug\NET.A.2019.Borovsky.02.exe.config
+D:\work\dotnet training\NET.A.2019.Borovsky.02\NET.A.2019.Borovsky.02\bin\Debug\NET.A.2019.Borovsky.02.exe
+D:\work\dotnet training\NET.A.2019.Borovsky.02\NET.A.2019.Borovsky.02\bin\Debug\NET.A.2019.Borovsky.02.pdb
+D:\work\dotnet training\NET.A.2019.Borovsky.02\NET.A.2019.Borovsky.02\bin\Debug\FindNextBiggerNumber.dll
+D:\work\dotnet training\NET.A.2019.Borovsky.02\NET.A.2019.Borovsky.02\obj\Debug\NET.A.2019.Borovsky.02.csprojAssemblyReference.cache
+D:\work\dotnet training\NET.A.2019.Borovsky.02\NET.A.2019.Borovsky.02\obj\Debug\NET.A.2019.Borovsky.02.csproj.CoreCompileInputs.cache
+D:\work\dotnet training\NET.A.2019.Borovsky.02\NET.A.2019.Borovsky.02\obj\Debug\NET.A.2019.Borovsky.02.csproj.CopyComplete
+D:\work\dotnet training\NET.A.2019.Borovsky.02\NET.A.2019.Borovsky.02\obj\Debug\NET.A.2019.Borovsky.02.exe
+D:\work\dotnet training\NET.A.2019.Borovsky.02\NET.A.2019.Borovsky.02\obj\Debug\NET.A.2019.Borovsky.02.pdb
+D:\work\dotnet training\NET.A.2019.Borovsky.02\NET.A.2019.Borovsky.02\bin\Debug\InsertNumber.dll
+D:\work\dotnet training\NET.A.2019.Borovsky.02\NET.A.2019.Borovsky.02\bin\Debug\FilterDigit.dll
+D:\work\dotnet training\NET.A.2019.Borovsky.02\NET.A.2019.Borovsky.02\bin\Debug\FindNthRoot.dll

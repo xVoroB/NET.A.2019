@@ -1,0 +1,16 @@
+using System;
+
+namespace InsertNumber
+{
+    public class InsNum
+    {
+        static public int InsertNumber(int a, int b, int i, int j)
+        {
+            int mask = j - i + 1;                           
+            mask = (int)Math.Pow(2, (double)mask) - 1;      // Creating mask
+            int num = (b & mask) << i;                      // Moving start to i
+
+            return (a | num);                               // Calculating
+        }
+    }
+}

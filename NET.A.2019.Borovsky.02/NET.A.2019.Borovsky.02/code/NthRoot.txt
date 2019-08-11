@@ -1,0 +1,40 @@
+using System;
+
+namespace FindNthRoot
+{
+    public class NthRoot
+    {
+        static public double FindNthRoot(double num, int n, double cap)
+        {
+            if (cap < 0 || n < 0)                                       // Checking if all the data is correct
+            {
+                return 0;
+            }
+
+            double result = num / n;                                    // Setting x0
+
+            double curr = 0;
+            int count = 0;
+
+            while (cap < 1)                                             // Calculating precision
+            {
+                count++;
+                cap *= 10;
+            }
+
+            while (curr != result)                                      // Calculating 
+            {
+                curr = result;
+                result = Math.Round(Calc(curr, num, n), count);
+            }
+
+
+            return result;
+        }
+
+        static double Calc(double res, double num, int n)
+        {
+            return (((n - 1) * res + (num / Math.Pow(res, n - 1))) / n);            // Next iteration calculation
+        }
+    }
+}
