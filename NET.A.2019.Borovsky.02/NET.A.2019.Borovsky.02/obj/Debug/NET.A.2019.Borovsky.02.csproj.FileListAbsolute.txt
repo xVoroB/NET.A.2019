@@ -10,3 +10,6 @@ D:\work\dotnet training\NET.A.2019.Borovsky.02\NET.A.2019.Borovsky.02\obj\Debug\
 D:\work\dotnet training\NET.A.2019.Borovsky.02\NET.A.2019.Borovsky.02\bin\Debug\InsertNumber.dll
 D:\work\dotnet training\NET.A.2019.Borovsky.02\NET.A.2019.Borovsky.02\bin\Debug\FilterDigit.dll
 D:\work\dotnet training\NET.A.2019.Borovsky.02\NET.A.2019.Borovsky.02\bin\Debug\FindNthRoot.dll
+D:\work\dotnet training\NET.A.2019.Borovsky.02\NET.A.2019.Borovsky.02\bin\Debug\nunit.framework.dll
+D:\work\dotnet training\NET.A.2019.Borovsky.02\NET.A.2019.Borovsky.02\bin\Debug\nunit.framework.pdb
+D:\work\dotnet training\NET.A.2019.Borovsky.02\NET.A.2019.Borovsky.02\bin\Debug\nunit.framework.xml
