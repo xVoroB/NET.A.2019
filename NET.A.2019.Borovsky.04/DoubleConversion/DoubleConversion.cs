@@ -43,8 +43,16 @@ namespace DoubleConversion
             }
             else
             {
+
                 exponentInt = (long)inputDouble;
+
                 inputDouble = inputDouble - exponentInt;
+
+            }
+
+            if (exponentInt < 0)
+            {
+                exponentInt = -exponentInt;
             }
 
             while (exponentInt / 2 > 0)
@@ -76,7 +84,7 @@ namespace DoubleConversion
             Array.Reverse(temp);
             mantissaString = new string(temp);
 
-            while (inputDouble != 0 && mantissaString.Length < 52)
+            while (inputDouble != 0 && (mantissaString.Length < 52 || !double.IsInfinity(inputDouble)))
             {
                 inputDouble *= 2;
                 if (inputDouble >= 1)
@@ -130,10 +138,18 @@ namespace DoubleConversion
             {
                 exponentString += "0";
             }
-            for (int i = mantissaString.Length; i < 52; i++)
+            if (mantissaString.Length > 52)
             {
-                mantissaString += "0";
+                mantissaString = mantissaString.Remove(0, mantissaString.Length - 52);
             }
+            else
+            {
+                for (int i = mantissaString.Length; i < 52; i++)
+                {
+                    mantissaString += "0";
+                }
+            }
+
 
             return signString + exponentString + mantissaString;
         }
