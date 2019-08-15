@@ -16,6 +16,7 @@ namespace DoubleConversion
             long exponentInt;
             bool firstZero = true;
 
+
             if (inputDouble < 0)
             {
                 signString += "1";
@@ -26,9 +27,26 @@ namespace DoubleConversion
                 signString += "0";
             }
 
-            exponentInt = (long)inputDouble;
-            inputDouble = inputDouble - exponentInt;
-            
+            if (double.IsInfinity(inputDouble))
+            {
+
+                for (int i = exponentString.Length; i < 11; i++)
+                {
+                    exponentString += "1";
+                }
+                for (int i = mantissaString.Length; i < 52; i++)
+                {
+                    mantissaString += "0";
+                }
+
+                return signString + exponentString + mantissaString;
+            }
+            else
+            {
+                exponentInt = (long)inputDouble;
+                inputDouble = inputDouble - exponentInt;
+            }
+
             while (exponentInt / 2 > 0)
             {
                 if (!firstZero)
@@ -72,38 +90,41 @@ namespace DoubleConversion
                 }
             }
 
-            exponentInt = count + 1023;
-
-            firstZero = true;
-
-            while (exponentInt / 2 > 0)
+            if (exponentInt != 0)
             {
-                if (!firstZero)
+                exponentInt = count + 1023;
+
+                firstZero = true;
+
+                while (exponentInt / 2 > 0)
                 {
-                    if (exponentInt % 2 == 0)
+                    if (!firstZero)
                     {
-                        exponentString += "0";
+                        if (exponentInt % 2 == 0)
+                        {
+                            exponentString += "0";
+                        }
+                        else
+                        {
+                            exponentString += "1";
+                        }
                     }
                     else
                     {
-                        exponentString += "1";
+                        if (exponentInt % 2 != 0)
+                        {
+                            firstZero = false;
+                            exponentString += "1";
+                        }
                     }
+                    exponentInt /= 2;
                 }
-                else
-                {
-                    if (exponentInt % 2 != 0)
-                    {
-                        firstZero = false;
-                        exponentString += "1";
-                    }
-                }
-                exponentInt /= 2;
-            }
-            exponentString += "1";
+                exponentString += "1";
 
-            temp = exponentString.ToCharArray();
-            Array.Reverse(temp);
-            exponentString = new string(temp);
+                temp = exponentString.ToCharArray();
+                Array.Reverse(temp);
+                exponentString = new string(temp);
+            }
 
             for (int i = exponentString.Length; i < 11; i++)
             {

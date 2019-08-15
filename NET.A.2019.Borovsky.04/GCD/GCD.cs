@@ -23,7 +23,7 @@ namespace GCD
             return gcd;
         }
 
-        public static int Euclid(params int[] numbers)
+        public static int Euclidean(params int[] numbers)
         {
             return Set(true, numbers); 
         }
