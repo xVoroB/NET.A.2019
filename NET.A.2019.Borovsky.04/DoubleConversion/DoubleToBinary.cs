@@ -12,7 +12,8 @@ namespace DoubleConversion
         public static string Convert(double inputDouble)
         {
             string signString = "", exponentString = "", mantissaString = "";
-            int exponentInt, count = 0;
+            int count = 0;
+            long exponentInt;
             bool firstZero = true;
 
             if (inputDouble < 0)
@@ -25,7 +26,7 @@ namespace DoubleConversion
                 signString += "0";
             }
 
-            exponentInt = (int)inputDouble;
+            exponentInt = (long)inputDouble;
             inputDouble = inputDouble - exponentInt;
             
             while (exponentInt / 2 > 0)
@@ -57,7 +58,7 @@ namespace DoubleConversion
             Array.Reverse(temp);
             mantissaString = new string(temp);
 
-            while (inputDouble != 0)
+            while (inputDouble != 0 && mantissaString.Length < 52)
             {
                 inputDouble *= 2;
                 if (inputDouble >= 1)
