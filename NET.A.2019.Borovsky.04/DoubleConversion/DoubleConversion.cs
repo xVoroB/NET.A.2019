@@ -84,7 +84,7 @@ namespace DoubleConversion
             Array.Reverse(temp);
             mantissaString = new string(temp);
 
-            while (inputDouble != 0 && (mantissaString.Length < 52 || !double.IsInfinity(inputDouble)))
+            while (inputDouble != 0 && (mantissaString.Length < 52 || (!double.IsInfinity(inputDouble) && !double.IsNaN(inputDouble))))
             {
                 inputDouble *= 2;
                 if (inputDouble >= 1)
