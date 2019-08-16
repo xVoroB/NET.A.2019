@@ -17,7 +17,11 @@ namespace DoubleConversion
             bool firstZero = true;
 
 
-            if (inputDouble < 0)
+            if (double.IsNegativeInfinity(1 / inputDouble))
+            {
+                signString += "1";
+            }
+            else if (inputDouble < 0)
             {
                 signString += "1";
                 inputDouble = -inputDouble;
