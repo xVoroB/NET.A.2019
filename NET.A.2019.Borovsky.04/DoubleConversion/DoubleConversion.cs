@@ -21,6 +21,10 @@ namespace DoubleConversion
             {
                 signString += "1";
             }
+            else if(double.IsNaN(inputDouble))
+            {
+                return "1111111111111000000000000000000000000000000000000000000000000000";
+            }
             else if (inputDouble < 0)
             {
                 signString += "1";
@@ -47,18 +51,10 @@ namespace DoubleConversion
             }
             else
             {
-
                 exponentInt = (long)inputDouble;
-
                 inputDouble = inputDouble - exponentInt;
-
             }
-
-            if (exponentInt < 0)
-            {
-                exponentInt = -exponentInt;
-            }
-
+            
             while (exponentInt / 2 > 0)
             {
                 if (!firstZero)
@@ -88,7 +84,7 @@ namespace DoubleConversion
             Array.Reverse(temp);
             mantissaString = new string(temp);
 
-            while (inputDouble != 0 && (mantissaString.Length < 52 || (!double.IsInfinity(inputDouble) && !double.IsNaN(inputDouble))))
+            while (inputDouble != 0 && (mantissaString.Length < 52 || (!double.IsInfinity(inputDouble))))
             {
                 inputDouble *= 2;
                 if (inputDouble >= 1)
@@ -105,9 +101,7 @@ namespace DoubleConversion
             if (exponentInt != 0)
             {
                 exponentInt = count + 1023;
-
                 firstZero = true;
-
                 while (exponentInt / 2 > 0)
                 {
                     if (!firstZero)
@@ -132,7 +126,6 @@ namespace DoubleConversion
                     exponentInt /= 2;
                 }
                 exponentString += "1";
-
                 temp = exponentString.ToCharArray();
                 Array.Reverse(temp);
                 exponentString = new string(temp);
@@ -142,6 +135,7 @@ namespace DoubleConversion
             {
                 exponentString += "0";
             }
+
             if (mantissaString.Length > 52)
             {
                 mantissaString = mantissaString.Remove(0, mantissaString.Length - 52);
@@ -153,7 +147,6 @@ namespace DoubleConversion
                     mantissaString += "0";
                 }
             }
-
 
             return signString + exponentString + mantissaString;
         }
