@@ -1,0 +1,11 @@
+D:\work\dotnet training\ConsoleMiniProject\ConsoleMiniProject\bin\Debug\ConsoleMiniProject.exe.config
+D:\work\dotnet training\ConsoleMiniProject\ConsoleMiniProject\bin\Debug\ConsoleMiniProject.exe
+D:\work\dotnet training\ConsoleMiniProject\ConsoleMiniProject\bin\Debug\ConsoleMiniProject.pdb
+D:\work\dotnet training\ConsoleMiniProject\ConsoleMiniProject\bin\Debug\CsvHelper.dll
+D:\work\dotnet training\ConsoleMiniProject\ConsoleMiniProject\bin\Debug\System.ValueTuple.dll
+D:\work\dotnet training\ConsoleMiniProject\ConsoleMiniProject\bin\Debug\CsvHelper.xml
+D:\work\dotnet training\ConsoleMiniProject\ConsoleMiniProject\bin\Debug\System.ValueTuple.xml
+D:\work\dotnet training\ConsoleMiniProject\ConsoleMiniProject\obj\Debug\ConsoleMiniProject.csprojAssemblyReference.cache
+D:\work\dotnet training\ConsoleMiniProject\ConsoleMiniProject\obj\Debug\ConsoleMiniProject.csproj.CopyComplete
+D:\work\dotnet training\ConsoleMiniProject\ConsoleMiniProject\obj\Debug\ConsoleMiniProject.exe
+D:\work\dotnet training\ConsoleMiniProject\ConsoleMiniProject\obj\Debug\ConsoleMiniProject.pdb
