@@ -14,15 +14,15 @@ namespace ConsoleMiniProject
         static void Main(string[] args)
         {
             string input;
-            var users = new List<Library>();
+            var library = new List<User>();
             int i = 0;
             
 
             while (true)
             {
-                var fstream = new FileStream(@"D:\buffer.txt", FileMode.Create, FileAccess.ReadWrite, FileShare.ReadWrite);
+                var fstream = new FileStream(@"D:\ConsoleProject\Buff\buffer.txt", FileMode.Create, FileAccess.ReadWrite, FileShare.ReadWrite);
                 var sw = new StreamWriter(fstream, Encoding.UTF8);
-                foreach (var item in users)
+                foreach (var item in library)
                 {
                     sw.WriteLine(item.GetInfo());
                 }
@@ -34,8 +34,8 @@ namespace ConsoleMiniProject
                 switch (command[0])
                 {
                     case "create":
-                        users.Add(new Library());
-                        users[i].Create();
+                        library.Add(new User());
+                        library[i].Create();
                         i++;
                         break;
                     case "list":
@@ -46,7 +46,7 @@ namespace ConsoleMiniProject
                                 command[k] = command[k].Trim(',');
                             }
                             Console.WriteLine();
-                            foreach (var item in users)
+                            foreach (var item in library)
                             {
                                 byte a = 1;
                                 while (a < command.Length)
@@ -64,7 +64,7 @@ namespace ConsoleMiniProject
                         }
                         else
                         {
-                            foreach (var item in users)
+                            foreach (var item in library)
                             {
                                 Console.Write(item.GetInfo());
                                 Console.WriteLine();
@@ -72,35 +72,47 @@ namespace ConsoleMiniProject
                         }
                         break;
                     case "stat":
-                        Console.WriteLine(users.Count + " records");
+                        Console.WriteLine(library.Count + " records");
                         break;
                     case "find":
                         for (int s = 1; s < command.Length; s++)
                         {
                             command[s] = command[s].Trim(',');
                         }
-                        foreach (var item in users)
+
+
+
+                        if (command.Length > 3)
                         {
-                            int finder1 = item.Finder(command[1], command[2]);
+                            for (int k = command.Length - 1; k > 3; k--)
+                            {
+
+                            }
+                        }
+
+                        foreach (var item in library)
+                        {
+                            int singleFinder = item.Finder(command[1], command[2]);
                             if (command.Length > 3)
                             {
+
                                 int finder2 = item.Finder(command[3], command[4]);
-                                if (finder1 > 0 && finder2 > 0 && finder1 == finder2)
+                                if (singleFinder > 0 && finder2 > 0 && singleFinder == finder2)
                                 {
-                                    Console.WriteLine("#" + finder1);
+                                    Console.WriteLine("#" + singleFinder);
                                 }
-                                else if (finder1 > 0)
+                                else if (singleFinder > 0)
                                 {
-                                    Console.WriteLine("#" + finder1);
+                                    Console.WriteLine("#" + singleFinder);
                                 }
                                 else if (finder2 > 0)
                                 {
                                     Console.WriteLine("#" + finder2);
                                 }
                             }
-                            else if (finder1 > 0)
+                            else if (singleFinder > 0)
                             {
-                                Console.WriteLine("#" + finder1);
+                                Console.WriteLine("#" + singleFinder);
                             }
                         }
                         break;
@@ -108,20 +120,20 @@ namespace ConsoleMiniProject
                         if (command.Length > 1)
                         {
                             command[1] = command[1].TrimStart('#');
-                            users[int.Parse(command[1]) - 1].Edit();
+                            library[int.Parse(command[1]) - 1].Edit();
                         }
                         break;
                     case "export":
                         if (command.Length > 1)
                         {
-                            string pathCsvFile = "D:\\consoleprojectexport\\users.csv";
+                            string pathCsvFile = @"D:\ConsoleProject\Export\users.csv";
                             if (command[1].Equals("csv"))
                             {
                                 using (var streamReader = new StreamWriter(pathCsvFile))
                                 {
                                     using (var csvWriter = new CsvWriter(streamReader))
                                     {
-                                        csvWriter.WriteRecords(users);
+                                        csvWriter.WriteRecords(library);
                                     }
                                 }
                                 Console.WriteLine("Export .csv file finished");
@@ -134,10 +146,10 @@ namespace ConsoleMiniProject
                                 settings.NewLineOnAttributes = true;
                                 settings.ConformanceLevel = ConformanceLevel.Auto;
 
-                                using (var xmlWriter = XmlWriter.Create("D:\\consoleprojectexport\\users.xml", settings))
+                                using (var xmlWriter = XmlWriter.Create(@"D:\ConsoleProject\Export\users.xml", settings))
                                 {
                                     xmlWriter.WriteStartElement("Users");
-                                    foreach (var item in users)
+                                    foreach (var item in library)
                                     {
                                         string idString = item.number.ToString();
                                         xmlWriter.WriteStartElement("User");
@@ -156,32 +168,32 @@ namespace ConsoleMiniProject
                         break;
                     case "remove":
                         command[1] = command[1].Trim('#');
-                        int num = int.Parse(command[1]);
-                        users.Remove(users[num]);
+                        int num = int.Parse(command[1]) - 1;
+                        library.Remove(library[num]);
                         Console.WriteLine("Record #{0} is removed", num);
-                        for (int l = 0; l < users.Count; l++)
+                        for (int l = 0; l < library.Count; l++)
                         {
-                            if (users[l].number > num)
+                            if (library[l].number > num)
                             {
-                                users[l].number--;
+                                library[l].number--;
                             }
                         }
                         i--;
                         break;
                     case "purge":
-                        fstream = new FileStream(@"D:\beforePurge.txt", FileMode.Create, FileAccess.ReadWrite, FileShare.ReadWrite);
+                        fstream = new FileStream(@"D:\ConsoleProject\Buff\beforePurge.txt", FileMode.Create, FileAccess.ReadWrite, FileShare.ReadWrite);
                         sw = new StreamWriter(fstream, Encoding.UTF8);
-                        foreach (var item in users)
+                        foreach (var item in library)
                         {
                             sw.WriteLine(item.GetInfo());
                         }
                         sw.Flush();
                         sw.Dispose();
 
-                        int b = users.Count - 1;
+                        int b = library.Count - 1;
                         while (b >= 0)
                         {
-                            users.RemoveAt(b--);
+                            library.RemoveAt(b--);
                         }
 
                         Console.WriteLine("All data is erased");
@@ -199,25 +211,25 @@ namespace ConsoleMiniProject
                                     var file = command[2].Split('.');
                                     if (file[1].Equals("csv"))
                                     {
-                                        using (var reader = new StreamReader("D:\\consoleprojectimport\\" + file[0] + ".csv"))
+                                        using (var reader = new StreamReader("D:\\ConsoleProject\\Import\\" + file[0] + ".csv"))
                                         {
-                                            if (users.Count == 0)
+                                            if (library.Count == 0)
                                             {
-                                                users.Add(new Library());
-                                                users[0].ZeroCount();
+                                                library.Add(new User());
+                                                library[0].ZeroCount();
                                             }
                                             else
                                             {
-                                                users[0].ZeroCount();
+                                                library[0].ZeroCount();
                                             }
 
-                                            users = new List<Library>();
+                                            library = new List<User>();
                                             while (!reader.EndOfStream)
                                             {
                                                 if (!firstEntrance)
                                                 {
                                                     var csvInput = reader.ReadLine().Split(';');
-                                                    users.Add(new Library(index, csvInput[0], csvInput[1], csvInput[2]));
+                                                    library.Add(new User(index, csvInput[0], csvInput[1], csvInput[2]));
                                                     index++;
                                                 }
                                                 else
@@ -234,12 +246,12 @@ namespace ConsoleMiniProject
                             }
                             else if(command[1].Equals("xml"))
                             {
-                                users = new List<Library> ();
+                                library = new List<User> ();
                                 int ind = 0;
                                 string fName = "", lName = "", bD = "";
                                 var name = command[2].Split('.');
                                 var xDoc = new XmlDocument();
-                                xDoc.Load("D:\\consoleprojectimport\\" + name[0] + ".xml");
+                                xDoc.Load("D:\\ConsoleProject\\Import\\" + name[0] + ".xml");
                                 var xRoot = xDoc.DocumentElement;
                                 foreach (XmlNode xNode in xRoot)
                                 {
@@ -266,7 +278,7 @@ namespace ConsoleMiniProject
                                                 bD = childNode.InnerText;
                                             }
                                         }
-                                        users.Add(new Library(ind, fName, lName, bD));
+                                        library.Add(new User(ind, fName, lName, bD));
                                     }
                                 }
                                 Console.WriteLine("xml import complete");
