@@ -1,15 +1,19 @@
-﻿using System;
-
-namespace HomeWork13
+﻿namespace HomeWork13
 {
+    using System;
+
+    /// <summary>
+    /// Base class for square matrices.
+    /// </summary>
+    /// <typeparam name="T"> Generic type. </typeparam>
     public class SquareMatrix<T>
     {
-        public delegate void Changes(int index1, int index2);
-
-        public event Changes OnElementChange;
-
         protected T[][] matrix;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SquareMatrix{T}"/> class.
+        /// </summary>
+        /// <param name="matrix"> Square matrix. </param>
         public SquareMatrix(T[][] matrix)
         {
             foreach (var internalArray in matrix)
@@ -19,50 +23,21 @@ namespace HomeWork13
                     throw new ArgumentException("Enter square matrix");
                 }
             }
+
             this.matrix = matrix;
         }
 
-        public void GetMatrix()
-        {
-            for (int i = 0; i < matrix.Length; i++)
-            {
-                foreach (var internalArrayValue in matrix[i])
-                {
-                    Console.Write(internalArrayValue + " ");
-                }
-                Console.WriteLine();
-            }
-        }
+        /// <summary>
+        /// Delegate to handle changing.
+        /// </summary>
+        /// <param name="index1"> Row index </param>
+        /// <param name="index2"> Column index </param>
+        public delegate void Changes(int index1, int index2);
 
-        public void SetValue(int rowIndex, int columnIndex, T value)
-        {
-            if (value.GetType() != matrix[0][0].GetType())
-            {
-                throw new ArgumentException("You can't change value to other type");
-            }
-            else if (rowIndex > matrix.Length || columnIndex > matrix.Length)
-            {
-                throw new IndexOutOfRangeException("Indexes were out of matrix range");
-            }
-            else
-            {
-                matrix[rowIndex][columnIndex] = value;
-            }
-
-            OnValueChange(rowIndex, columnIndex);
-        }
-
-        protected void OnValueChange(int rowIndex, int columnIndex)
-        {
-            var hand = new MatrixEventHandler();
-
-            if (OnElementChange == null)
-            {
-                OnElementChange += hand.Message;
-            }
-
-            OnElementChange.Invoke(rowIndex, columnIndex);
-        }
+        /// <summary>
+        /// Event to trigger on changing
+        /// </summary>
+        public event Changes OnElementChange;
 
         public static T[][] operator +(SquareMatrix<T> firstMatrix, SquareMatrix<T> secondMatrix)
         {
@@ -70,6 +45,7 @@ namespace HomeWork13
             {
                 throw new ArgumentException("You can't sum matrices with different lengths");
             }
+
             int len = firstMatrix.matrix.Length;
 
             T[][] sumResult = new T[len][];
@@ -89,10 +65,11 @@ namespace HomeWork13
                     }
                     else
                     {
-                        sumResult[i][j] = firstMatrix.matrix[i][j] as dynamic + secondMatrix.matrix[i][j] as dynamic;
+                        sumResult[i][j] = (firstMatrix.matrix[i][j] as dynamic) + (secondMatrix.matrix[i][j] as dynamic);
                     }
                 }
             }
+
             return sumResult;
         }
 
@@ -106,6 +83,62 @@ namespace HomeWork13
         {
             return secondMatrix + firstMatrix;
         }
-    }
 
+        /// <summary>
+        /// Writing down to console all the matrix.
+        /// </summary>
+        public void GetMatrix()
+        {
+            for (int i = 0; i < this.matrix.Length; i++)
+            {
+                foreach (var internalArrayValue in this.matrix[i])
+                {
+                    Console.Write(internalArrayValue + " ");
+                }
+
+                Console.WriteLine();
+            }
+        }
+
+        /// <summary>
+        /// Setting value for element of matrix.
+        /// </summary>
+        /// <param name="rowIndex"> Row index. </param>
+        /// <param name="columnIndex"> Column index. </param>
+        /// <param name="value"> Value to set. </param>
+        public void SetValue(int rowIndex, int columnIndex, T value)
+        {
+            if (value.GetType() != this.matrix[0][0].GetType())
+            {
+                throw new ArgumentException("You can't change value to other type");
+            }
+            else if (rowIndex > this.matrix.Length || columnIndex > this.matrix.Length)
+            {
+                throw new IndexOutOfRangeException("Indexes were out of matrix range");
+            }
+            else
+            {
+                this.matrix[rowIndex][columnIndex] = value;
+            }
+
+            this.OnValueChange(rowIndex, columnIndex);
+        }
+
+        /// <summary>
+        /// Method to invoke event.
+        /// </summary>
+        /// <param name="rowIndex"> Row index. </param>
+        /// <param name="columnIndex"> Column index. </param>
+        protected void OnValueChange(int rowIndex, int columnIndex)
+        {
+            var hand = new MatrixEventHandler();
+
+            if (this.OnElementChange == null)
+            {
+                this.OnElementChange += hand.Message;
+            }
+
+            this.OnElementChange.Invoke(rowIndex, columnIndex);
+        }
+    }
 }

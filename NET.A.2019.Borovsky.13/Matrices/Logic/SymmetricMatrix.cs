@@ -1,17 +1,31 @@
-﻿using System;
-
-namespace HomeWork13
+﻿namespace HomeWork13
 {
+    using System;
+
+    /// <summary>
+    /// Class to operate with symmetric matrices.
+    /// </summary>
+    /// <typeparam name="T"> Generic type. </typeparam>
     public class SymmetricMatrix<T> : SquareMatrix<T>
     {
-        public SymmetricMatrix(T[][] matrix) : base(matrix)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SymmetricMatrix{T}"/> class.
+        /// </summary>
+        /// <param name="matrix"> Symmetric matrix. </param>
+        public SymmetricMatrix(T[][] matrix)
+            : base(matrix)
         {
-            if (IsSymMatrix(matrix))
+            if (this.IsSymMatrix(matrix))
             {
                 this.matrix = matrix;
             }
         }
 
+        /// <summary>
+        /// Checker if given matrix is symmetric.
+        /// </summary>
+        /// <param name="matrix"> Input matrix. </param>
+        /// <returns> False or true. </returns>
         protected virtual bool IsSymMatrix(T[][] matrix)
         {
             bool isSym = false;
@@ -25,10 +39,12 @@ namespace HomeWork13
                     {
                         continue;
                     }
+
                     if (matrix[i][j] == null && matrix[j][i] == null)
                     {
                         continue;
                     }
+
                     if (matrix[i][j] == null || matrix[j][i] == null)
                     {
                         throw new ArgumentException("Matrix is not symmetric");
@@ -38,8 +54,10 @@ namespace HomeWork13
                         throw new ArgumentException("Matrix is not symmetric");
                     }
                 }
+
                 isSym = true;
             }
+
             return isSym;
         }
     }
