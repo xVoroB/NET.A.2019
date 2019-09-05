@@ -4,20 +4,20 @@
 
 
     /// <summary>
-    /// <see cref="Queue{T}"/> class implements operations with queue.
+    /// <see cref="CustomQueue{T}"/> class implements operations with queue.
     /// </summary>
     /// <typeparam name="T"> Generic param. </typeparam>
-    public class Queue<T>
+    public class CustomQueue<T>
     {
         private T[] queue;
         private int end;
         private int current;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Queue{T}"/> class.
+        /// Initializes a new instance of the <see cref="CustomQueue{T}"/> class.
         /// </summary>
         /// <param name="startingQueue"> Initialized queue. </param>
-        public Queue(T[] startingQueue)
+        public CustomQueue(T[] startingQueue)
         {
             if (startingQueue != null)
             {
@@ -45,6 +45,22 @@
                 }
 
                 return -1;
+            }
+        }
+
+        /// <summary>
+        /// Gets all elements of queue.
+        /// </summary>
+        public T[] QueueArray
+        {
+            get
+            {
+                if (!this.IsEmpty())
+                {
+                    return this.queue;
+                }
+
+                throw new ArgumentException("Queue is empty");
             }
         }
 
@@ -242,7 +258,5 @@
                 this.queue[i - 1] = temp;
             }
         }
-
     }
-
 }
