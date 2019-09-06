@@ -1,15 +1,17 @@
 ﻿namespace HomeWork13
 {
     using System;
+    using System.Collections;
+    using System.Collections.Generic;
 
 
     /// <summary>
-    /// <see cref="CustomQueue{T}"/> class implements operations with queue.
+    /// Class implements operations with queue.
     /// </summary>
     /// <typeparam name="T"> Generic param. </typeparam>
-    public class CustomQueue<T>
+    public class CustomQueue<T> : IEnumerator<T>
     {
-        private T[] queue;
+        private List<T> queue;
         private int end;
         private int current;
 
@@ -17,19 +19,29 @@
         /// Initializes a new instance of the <see cref="CustomQueue{T}"/> class.
         /// </summary>
         /// <param name="startingQueue"> Initialized queue. </param>
-        public CustomQueue(T[] startingQueue)
+        public CustomQueue(List<T> startingQueue)
         {
             if (startingQueue != null)
             {
                 this.queue = startingQueue;
-                this.end = this.queue.Length;
-                this.current = 0;
+                this.end = this.queue.Count;
+                this.current = -1;
             }
             else
             {
                 this.end = 0;
-                this.current = 0;
+                this.current = -1;
             }
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CustomQueue{T}"/> class.
+        /// </summary>
+        public CustomQueue()
+        {
+            this.queue = new List<T>();
+            this.end = 0;
+            this.current = -1;
         }
 
         /// <summary>
@@ -41,7 +53,7 @@
             {
                 if (!this.IsEmpty())
                 {
-                    return this.queue.Length;
+                    return this.queue.Count;
                 }
 
                 return -1;
@@ -51,7 +63,7 @@
         /// <summary>
         /// Gets all elements of queue.
         /// </summary>
-        public T[] QueueArray
+        public List<T> QueueList
         {
             get
             {
@@ -65,10 +77,37 @@
         }
 
         /// <summary>
+        /// Gets current element.
+        /// </summary>
+        /// <returns> Current chosen element. </returns>
+        public T Current
+        {
+            get
+            {
+                if (this.current < 0)
+                {
+                    throw new ArgumentException("Index was out of range");
+                }
+
+                if (!this.IsEmpty())
+                {
+                    return this.queue[this.current];
+                }
+
+                throw new Exception("Queue is empty");
+            }
+        }
+
+        /// <summary>
         /// Gets location of pointer.
         /// </summary>
         /// <returns> Pointer index. </returns>
         public int CurrentIndex => this.current + 1;
+
+        /// <summary>
+        /// Gets current object.
+        /// </summary>
+        object IEnumerator.Current => this.Current;
 
         /// <summary>
         /// Writes down to console all the queue.
@@ -84,46 +123,35 @@
         }
 
         /// <summary>
-        /// Method to work with current element.
-        /// </summary>
-        /// <returns> Current chosen element. </returns>
-        public T CurrentElement()
-        {
-            if (!this.IsEmpty())
-            {
-                return this.queue[this.current];
-            }
-
-            throw new Exception("Queue is empty");
-        }
-
-        /// <summary>
         /// Writes down to console current element.
         /// </summary>
         public void ShowCurrentElement()
         {
-            Console.WriteLine(this.CurrentElement());
+            Console.WriteLine(this.Current);
         }
 
         /// <summary>
         /// Moving pointer to the next position.
         /// </summary>
-        public void Next()
+        /// <returns> If moving was succesfull. </returns>
+        public bool MoveNext()
         {
-            if (this.current == this.queue.Length - 1)
+            if (this.current == this.queue.Count - 1)
             {
-                throw new Exception("Can't go further");
+                this.current = 0;
+                return false;
             }
 
             this.current++;
+            return true;
         }
 
         /// <summary>
         /// Setting pointer to the previous position.
         /// </summary>
-        public void Previous()
+        public void MovePrevious()
         {
-            if (this.current == 0)
+            if (this.current <= 0)
             {
                 throw new Exception("Can't go before zero");
             }
@@ -135,7 +163,7 @@
         /// <summary>
         /// Resetting pointer.
         /// </summary>
-        public void Reset() => this.current = 0;
+        public void Reset() => this.current = -1;
 
         /// <summary>
         /// Writing down to console pointer position.
@@ -149,13 +177,10 @@
         {
             if (!this.IsEmpty())
             {
-                if (this.current > 0)
+                if (this.current >= 0)
                 {
-                    this.BeforeCurrentRemove();
-                    this.current--;
+                    this.queue.RemoveAt(this.current);
                 }
-
-                this.Remove();
             }
             else
             {
@@ -171,10 +196,7 @@
         {
             if (element != null)
             {
-                T[] temp = new T[this.end + 1];
-                Array.Copy(this.queue, temp, this.end);
-                temp[this.end] = element;
-                this.queue = temp;
+                this.queue.Add(element);
                 this.end++;
             }
             else
@@ -184,13 +206,11 @@
         }
 
         /// <summary>
-        /// Removes first element from the queue;
+        /// Removes first element from the queue.
         /// </summary>
         public void Remove()
         {
-            T[] temp = new T[this.end - 1];
-            Array.Copy(this.queue, 1, temp, 0, this.end - 1);
-            this.queue = temp;
+            this.queue.RemoveAt(0);
             this.end--;
         }
 
@@ -225,11 +245,10 @@
         /// <summary>
         /// Method to delete all the queue.
         /// </summary>
-        public void Clear()
+        public void Dispose()
         {
-            this.queue = new T[0];
-            this.end = 0;
-            this.current = 0;
+            this.queue.RemoveRange(0, this.end);
+            this.current = -1;
         }
 
         /// <summary>
@@ -238,25 +257,12 @@
         /// <returns> False if not empty. </returns>
         public bool IsEmpty()
         {
-            if (this.queue.Length <= 0)
+            if (this.queue.Count <= 0)
             {
                 return true;
             }
 
             return false;
-        }
-
-        /// <summary>
-        /// Placing removing element to the start and pushing other.
-        /// </summary>
-        private void BeforeCurrentRemove()
-        {
-            for (int i = this.current; i > 0; i--)
-            {
-                T temp = this.queue[i];
-                this.queue[i] = this.queue[i - 1];
-                this.queue[i - 1] = temp;
-            }
         }
     }
 }
