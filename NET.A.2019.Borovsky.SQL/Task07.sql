@@ -2,4 +2,7 @@
 
 USE Northwind;
 
-SELECT City, COUNT(*) AS CustomerCount FROM Customers WHERE Country in ('Finland', 'Norway', 'Sweden') Group BY city;
+SELECT City, COUNT(*) AS CustomerCount 
+FROM Customers 
+WHERE Country in ('Finland', 'Norway', 'Sweden') 
+Group BY City;

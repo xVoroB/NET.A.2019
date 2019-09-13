@@ -2,4 +2,6 @@
 
 USE Northwind;
 
-Select EmployeeID from Employees where HireDate = (Select MAX(HireDate) from Employees);
+SELECT top 1 EmployeeID 
+FROM Employees 
+order by HireDate desc;

@@ -2,4 +2,7 @@
 
 USE Northwind;
 
-SELECT CompanyName FROM Customers WHERE City IN ('Berlin', 'London', 'Madrid' , 'Bruxelles', 'Paris') ORDER BY CustomerID DESC;
+SELECT CompanyName 
+FROM Customers
+WHERE City IN ('Berlin', 'London', 'Madrid' , 'Bruxelles', 'Paris')
+ORDER BY CustomerID DESC;

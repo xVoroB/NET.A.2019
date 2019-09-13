@@ -1,7 +1,12 @@
--- Rewrite the query;
+-- Rewrite the query
 
-USE Northwind;
+use Northwind;
 
-SELECT s.CompanyName, MIN(p.UnitPrice) AS MinPrice, MAX(p.UnitPrice) AS MaxPrice
-FROM products AS p INNER JOIN suppliers AS s ON p.SupplierID = s.SupplierID
-GROUP BY s.CompanyName ORDER BY s.CompanyName;
+select distinct s.CompanyName,  
+MIN(p.UnitPrice) as MinPrice,
+MAX(p.UnitPrice) as MaxPrice
+from Products as p 
+inner join Suppliers as s 
+on p.SupplierID = s.SupplierID
+group by s.CompanyName
+order by s.CompanyName asc;

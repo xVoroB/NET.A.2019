@@ -2,4 +2,6 @@
 
 USE Northwind;
 
-SELECT DISTINCT Country FROM Customers ORDER BY Country ASC;
+SELECT DISTINCT Country 
+FROM Customers 
+ORDER BY Country ASC;

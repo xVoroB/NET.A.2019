@@ -2,7 +2,10 @@
 
 USE Northwind;
 
-SELECT CustomerID, SUM(Freight) AS FreightSum FROM Orders 
-WHERE Freight >= (SELECT AVG(Freight) FROM Orders AS avgFreight 
-WHERE avgFreight.CustomerID = orders.CustomerID) AND ShippedDate BETWEEN '19960716' AND '19960731' 
-GROUP BY CustomerID ORDER BY FreightSum ASC;
+SELECT CustomerID, SUM(Freight) AS FreightSum 
+FROM Orders 
+WHERE Freight >= (SELECT AVG(Freight) FROM Orders AS AvgFreight 
+WHERE AvgFreight.CustomerID = Orders.CustomerID) 
+AND ShippedDate BETWEEN '19960716' AND '19960731' 
+GROUP BY CustomerID 
+ORDER BY FreightSum ASC;

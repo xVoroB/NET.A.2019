@@ -2,4 +2,7 @@
 
 USE Northwind;
 
-SELECT CustomerID FROM Orders WHERE RequiredDate between '19960901' and '19960930' ORDER BY CustomerID ASC;
+SELECT CustomerID 
+FROM Orders
+WHERE RequiredDate between '19960901' and '19960930' 
+ORDER BY CustomerID ASC;

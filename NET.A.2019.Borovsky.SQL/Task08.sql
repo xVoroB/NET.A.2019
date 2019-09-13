@@ -2,4 +2,8 @@
 
 USE Northwind;
 
-SELECT Country, Count(*) AS CustomerCount FROM Customers GROUP BY Country HAVING Count(*) >= 10  ORDER BY CustomerCount DESC;
+SELECT Country, Count(*) AS CustomerCount 
+FROM Customers 
+GROUP BY Country 
+HAVING Count(*) >= 10  
+ORDER BY CustomerCount DESC;
