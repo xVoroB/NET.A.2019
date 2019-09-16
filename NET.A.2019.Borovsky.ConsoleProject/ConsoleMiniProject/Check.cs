@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
-namespace ConsoleMiniProject
+namespace MiniProject
 {
     class Check
     {
@@ -31,7 +27,7 @@ namespace ConsoleMiniProject
 
         public static bool BirthDate(string input)
         {
-            if (Regex.IsMatch(input, @"[0-3]\d([-]|[.])[0-1]\d([-]|[.])[0-2]\d") && input.Length == 10)
+            if (Regex.IsMatch(input, @"[0-3]\d([-]|[.]|[/])[0-1]\d([-]|[.]|[/])[0-2]\d") && input.Length == 10)
             {
                 return true;
             }

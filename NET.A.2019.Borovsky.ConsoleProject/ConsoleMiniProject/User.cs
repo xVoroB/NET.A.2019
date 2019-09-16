@@ -1,17 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace ConsoleMiniProject
+namespace MiniProject
 {
     public class User
     {
         public string firstName { get; private set; }
         public string lastName { get; private set; }
-        public string birthDate { get; private set; }
+        public DateTime birthDate { get; private set; }
         public int number { get; set; }
+
 
         static int counter;
 
@@ -36,7 +33,11 @@ namespace ConsoleMiniProject
             number = index;
             this.firstName = firstName;
             this.lastName = lastName;
-            this.birthDate = birthDate;
+            birthDate = birthDate.Replace(".", "").Replace("/", "").Replace("-", "");
+            string day = string.Concat(birthDate[0], birthDate[1]);
+            string month = string.Concat(birthDate[2], birthDate[3]);
+            string year = string.Concat(birthDate[4], birthDate[5], birthDate[6], birthDate[7]);
+            this.birthDate = new DateTime(int.Parse(year), int.Parse(month), int.Parse(day));
         }
 
         /// <summary>
@@ -90,15 +91,27 @@ namespace ConsoleMiniProject
         {
             if (whichInput == 1)
             {
-                firstName = input;
+                string conversion;
+                char first = char.ToUpper(input[0]);
+                input = input.Remove(0, 1);
+                conversion = string.Concat(first, input.ToLower());
+                firstName = conversion;
             }
             else if (whichInput == 2)
             {
-                lastName = input;
+                string conversion;
+                char first = char.ToUpper(input[0]);
+                input = input.Remove(0, 1);
+                conversion = string.Concat(first, input.ToLower());
+                lastName = conversion;
             }
             else if (whichInput == 3)
             {
-                birthDate = input;
+                input = input.Replace(".", "").Replace("/", "").Replace("-","");
+                string day = string.Concat(input[0], input[1]);
+                string month = string.Concat(input[2], input[3]);
+                string year = string.Concat(input[4], input[5], input[6], input[7]);
+                birthDate = new DateTime(int.Parse(year), int.Parse(month), int.Parse(day));
                 number = counter;
                 Console.WriteLine("Record #{0} is created", number);
             }
@@ -124,19 +137,19 @@ namespace ConsoleMiniProject
             setter = setter.Trim('\"', '\'');
             if (toFind.Equals("firstname"))
             {
-                if (firstName == setter)
+                if (firstName.ToLower() == setter.ToLower())
                 {
                     return number;
                 }
             }
             else if (toFind.Equals("lastname"))
             {
-                if (lastName == setter)
+                if (lastName.ToLower() == setter.ToLower())
                 {
                     return number;
                 }
             }
-            return 0;
+            return -1;
         }
 
         /// <summary>
@@ -198,6 +211,6 @@ namespace ConsoleMiniProject
             }
             return "";
         }
-    }   
+    }
 
 }
