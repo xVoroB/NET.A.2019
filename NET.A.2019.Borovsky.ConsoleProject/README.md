@@ -2,8 +2,6 @@ Mini-project "File Cabinet"
 
 Step 1
 
-Work with records, use memory, List
-
 "create" command
 
 > create
