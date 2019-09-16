@@ -16,7 +16,6 @@ namespace ConsoleMiniProject
             string input;
             var library = new List<User>();
             int i = 0;
-            
 
             while (true)
             {
@@ -26,6 +25,7 @@ namespace ConsoleMiniProject
                 {
                     sw.WriteLine(item.GetInfo());
                 }
+
                 sw.Flush();
                 sw.Dispose();
 
@@ -34,17 +34,21 @@ namespace ConsoleMiniProject
                 switch (command[0])
                 {
                     case "create":
+
                         library.Add(new User());
                         library[i].Create();
                         i++;
                         break;
+
                     case "list":
+
                         if (command.Length > 1)
                         {
                             for (int k = 1; k < command.Length; k++)
                             {
                                 command[k] = command[k].Trim(',');
                             }
+
                             Console.WriteLine();
                             foreach (var item in library)
                             {
@@ -52,11 +56,11 @@ namespace ConsoleMiniProject
                                 while (a < command.Length)
                                 {
                                     Console.Write(item.ExtendedList(command[a]));
-
                                     if (a + 1 < command.Length)
                                     {
                                         Console.Write(", ");
                                     }
+
                                     a++;
                                 }
                                 Console.WriteLine();
@@ -70,17 +74,20 @@ namespace ConsoleMiniProject
                                 Console.WriteLine();
                             }
                         }
+
                         break;
+
                     case "stat":
+
                         Console.WriteLine(library.Count + " records");
                         break;
+
                     case "find":
+
                         for (int s = 1; s < command.Length; s++)
                         {
                             command[s] = command[s].Trim(',');
                         }
-
-
 
                         if (command.Length > 3)
                         {
@@ -97,6 +104,7 @@ namespace ConsoleMiniProject
                             {
 
                                 int finder2 = item.Finder(command[3], command[4]);
+
                                 if (singleFinder > 0 && finder2 > 0 && singleFinder == finder2)
                                 {
                                     Console.WriteLine("#" + singleFinder);
@@ -116,14 +124,18 @@ namespace ConsoleMiniProject
                             }
                         }
                         break;
+
                     case "edit":
+
                         if (command.Length > 1)
                         {
                             command[1] = command[1].TrimStart('#');
                             library[int.Parse(command[1]) - 1].Edit();
                         }
                         break;
+
                     case "export":
+
                         if (command.Length > 1)
                         {
                             string pathCsvFile = @"D:\ConsoleProject\Export\users.csv";
@@ -166,7 +178,9 @@ namespace ConsoleMiniProject
                             }
                         }
                         break;
+
                     case "remove":
+
                         command[1] = command[1].Trim('#');
                         int num = int.Parse(command[1]) - 1;
                         library.Remove(library[num]);
@@ -180,7 +194,9 @@ namespace ConsoleMiniProject
                         }
                         i--;
                         break;
+
                     case "purge":
+
                         fstream = new FileStream(@"D:\ConsoleProject\Buff\beforePurge.txt", FileMode.Create, FileAccess.ReadWrite, FileShare.ReadWrite);
                         sw = new StreamWriter(fstream, Encoding.UTF8);
                         foreach (var item in library)
@@ -196,8 +212,9 @@ namespace ConsoleMiniProject
                             library.RemoveAt(b--);
                         }
 
-                        Console.WriteLine("All data is erased");
+                        Console.WriteLine("All data was erased");
                         break;
+
                     case "import":
                         if (command.Length > 1)
                         {
@@ -290,7 +307,6 @@ namespace ConsoleMiniProject
                         break;
                 }
             }
-
         }
     }
 }

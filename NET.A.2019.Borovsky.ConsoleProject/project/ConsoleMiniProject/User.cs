@@ -12,12 +12,24 @@ namespace ConsoleMiniProject
         public string lastName { get; private set; }
         public string birthDate { get; private set; }
         public int number { get; set; }
+
         static int counter;
+
+        /// <summary>
+        /// Basic constructor
+        /// </summary>
         public User()
         {
             counter++;
         }
 
+        /// <summary>
+        /// Constructor with parameters
+        /// </summary>
+        /// <param name="index"> Current index </param>
+        /// <param name="firstName"> Firstname </param>
+        /// <param name="lastName"> Lastname </param>
+        /// <param name="birthDate"> Date of birth </param>
         public User(int index, string firstName, string lastName, string birthDate)
         {
             counter++;
@@ -27,32 +39,53 @@ namespace ConsoleMiniProject
             this.birthDate = birthDate;
         }
 
+        /// <summary>
+        /// Setting counter to zero
+        /// </summary>
         public void ZeroCount()
         {
             counter = 0;
         }
 
-        public void MinusCount()
-        {
-            counter--;
-        }
-
+        /// <summary>
+        /// Creating the user
+        /// </summary>
         public void Create()
         {
-            Console.WriteLine("Enter first name");
-            string input = Console.ReadLine();
-            //check
+            string input = "";
+            bool isValid = false;
+            while (!isValid)
+            {
+                Console.WriteLine("Enter firstname");
+                input = Console.ReadLine();
+                isValid = Check.FirstName(input);
+            }
             SetNames(input, 1);
-            Console.WriteLine("Enter last name");
-            input = Console.ReadLine();
-            //check
+
+            isValid = false;
+            while (!isValid)
+            {
+                Console.WriteLine("Enter lastname");
+                input = Console.ReadLine();
+                isValid = Check.LastName(input);
+            }
             SetNames(input, 2);
-            Console.WriteLine("Enter date of birth");
-            input = Console.ReadLine();
-            //check
+
+            isValid = false;
+            while (!isValid)
+            {
+                Console.WriteLine("Enter date of birth");
+                input = Console.ReadLine();
+                isValid = Check.BirthDate(input);
+            }
             SetNames(input, 3);
         }
 
+        /// <summary>
+        /// Setting data
+        /// </summary>
+        /// <param name="input"> Input </param>
+        /// <param name="whichInput"> Position of input </param>
         public void SetNames(string input, int whichInput)
         {
             if (whichInput == 1)
@@ -71,10 +104,21 @@ namespace ConsoleMiniProject
             }
         }
 
+        /// <summary>
+        /// Getting user info
+        /// </summary>
+        /// <returns> All user info </returns>
         public string GetInfo()
         {
             return ("#" + number + ", " + firstName + ", " + lastName);
         }
+
+        /// <summary>
+        /// Finder
+        /// </summary>
+        /// <param name="toFind"> What property to find </param>
+        /// <param name="setter"> What to find </param>
+        /// <returns> Id </returns>
         public int Finder(string toFind, string setter)
         {
             setter = setter.Trim('\"', '\'');
@@ -95,26 +139,49 @@ namespace ConsoleMiniProject
             return 0;
         }
 
+        /// <summary>
+        /// Method to edit user
+        /// </summary>
         public void Edit()
         {
             GetInfo();
 
-            Console.WriteLine("Enter firstname");
-            string input = Console.ReadLine();
-            //check
-            firstName = input;
-            Console.WriteLine("Enter lastname");
-            input = Console.ReadLine();
-            //check
-            lastName = input;
-            Console.WriteLine("Enter date of birth");
-            input = Console.ReadLine();
-            //check
-            birthDate = input;
+            string input = "";
+            bool isValid = false;
+            while (!isValid)
+            {
+                Console.WriteLine("Enter firstname");
+                input = Console.ReadLine();
+                isValid = Check.FirstName(input);
+            }
+            SetNames(input, 1);
+
+            isValid = false;
+            while (!isValid)
+            {
+                Console.WriteLine("Enter lastname");
+                input = Console.ReadLine();
+                isValid = Check.LastName(input);
+            }
+            SetNames(input, 2);
+
+            isValid = false;
+            while (!isValid)
+            {
+                Console.WriteLine("Enter date of birth");
+                input = Console.ReadLine();
+                isValid = Check.BirthDate(input);
+            }
+            SetNames(input, 3);
 
             Console.WriteLine("Record #{0} is edited", number);
         }
 
+        /// <summary>
+        /// Extended list
+        /// </summary>
+        /// <param name="finder"> Property to show </param>
+        /// <returns> Value of property </returns>
         public string ExtendedList(string finder)
         {
             if (finder.Equals("firstname"))
