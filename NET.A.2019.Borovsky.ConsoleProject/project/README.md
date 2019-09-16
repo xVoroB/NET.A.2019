@@ -1,4 +1,4 @@
-Mini-project "File Cabinet"\n
+Mini-project "File Cabinet"
 
 Step 1
 
