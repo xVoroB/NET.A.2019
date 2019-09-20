@@ -14,6 +14,8 @@ namespace MiniProject
             string input;
             var library = new List<User>();
             int i = 0;
+            Console.WriteLine("Type help for available commands");
+
 
             while (true)
             {
@@ -27,6 +29,7 @@ namespace MiniProject
                 sw.Flush();
                 sw.Dispose();
 
+                Console.Write("> ");
                 input = Console.ReadLine();
                 string[] command = input.ToLower().Split(' ');
                 switch (command[0])

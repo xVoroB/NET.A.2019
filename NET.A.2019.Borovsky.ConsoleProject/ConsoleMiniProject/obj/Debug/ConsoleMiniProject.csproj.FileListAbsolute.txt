@@ -22,3 +22,17 @@ C:\Users\Vladek\Documents\GitHub\NET.A.2019\NET.A.2019.Borovsky.ConsoleProject\p
 C:\Users\Vladek\Documents\GitHub\NET.A.2019\NET.A.2019.Borovsky.ConsoleProject\project\ConsoleMiniProject\obj\Debug\ConsoleMiniProject.pdb
 C:\Users\Vladek\Documents\GitHub\NET.A.2019\NET.A.2019.Borovsky.ConsoleProject\project\ConsoleMiniProject\bin\Debug\StyleCop.dll
 C:\Users\Vladek\Documents\GitHub\NET.A.2019\NET.A.2019.Borovsky.ConsoleProject\project\ConsoleMiniProject\bin\Debug\StyleCop.xml
+E:\VladProjs\NET.A.2019\NET.A.2019.Borovsky.ConsoleProject\ConsoleMiniProject\bin\Debug\ConsoleMiniProject.exe.config
+E:\VladProjs\NET.A.2019\NET.A.2019.Borovsky.ConsoleProject\ConsoleMiniProject\bin\Debug\ConsoleMiniProject.exe
+E:\VladProjs\NET.A.2019\NET.A.2019.Borovsky.ConsoleProject\ConsoleMiniProject\bin\Debug\ConsoleMiniProject.pdb
+E:\VladProjs\NET.A.2019\NET.A.2019.Borovsky.ConsoleProject\ConsoleMiniProject\bin\Debug\CsvHelper.dll
+E:\VladProjs\NET.A.2019\NET.A.2019.Borovsky.ConsoleProject\ConsoleMiniProject\bin\Debug\StyleCop.dll
+E:\VladProjs\NET.A.2019\NET.A.2019.Borovsky.ConsoleProject\ConsoleMiniProject\bin\Debug\System.ValueTuple.dll
+E:\VladProjs\NET.A.2019\NET.A.2019.Borovsky.ConsoleProject\ConsoleMiniProject\bin\Debug\CsvHelper.xml
+E:\VladProjs\NET.A.2019\NET.A.2019.Borovsky.ConsoleProject\ConsoleMiniProject\bin\Debug\StyleCop.xml
+E:\VladProjs\NET.A.2019\NET.A.2019.Borovsky.ConsoleProject\ConsoleMiniProject\bin\Debug\System.ValueTuple.xml
+E:\VladProjs\NET.A.2019\NET.A.2019.Borovsky.ConsoleProject\ConsoleMiniProject\obj\Debug\ConsoleMiniProject.csprojAssemblyReference.cache
+E:\VladProjs\NET.A.2019\NET.A.2019.Borovsky.ConsoleProject\ConsoleMiniProject\obj\Debug\ConsoleMiniProject.csproj.CoreCompileInputs.cache
+E:\VladProjs\NET.A.2019\NET.A.2019.Borovsky.ConsoleProject\ConsoleMiniProject\obj\Debug\ConsoleMiniProject.csproj.CopyComplete
+E:\VladProjs\NET.A.2019\NET.A.2019.Borovsky.ConsoleProject\ConsoleMiniProject\obj\Debug\ConsoleMiniProject.exe
+E:\VladProjs\NET.A.2019\NET.A.2019.Borovsky.ConsoleProject\ConsoleMiniProject\obj\Debug\ConsoleMiniProject.pdb
