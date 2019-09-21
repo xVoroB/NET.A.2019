@@ -1,0 +1,1 @@
+1. Implement export-converter with aability to import .txt files with URLs and exporting the right ones to .xml. Wrong URLs should be logged.
