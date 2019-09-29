@@ -1,0 +1,22 @@
+C:\Users\MIB\Desktop\AccountSystemApplication\DAL\bin\Debug\DAL.dll
+C:\Users\MIB\Desktop\AccountSystemApplication\DAL\bin\Debug\DAL.pdb
+C:\Users\MIB\Desktop\AccountSystemApplication\DAL\bin\Debug\DAL.Interface.dll
+C:\Users\MIB\Desktop\AccountSystemApplication\DAL\bin\Debug\DAL.Interface.pdb
+C:\Users\MIB\Desktop\AccountSystemApplication\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
+C:\Users\MIB\Desktop\AccountSystemApplication\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+C:\Users\MIB\Desktop\AccountSystemApplication\DAL\obj\Debug\DAL.dll
+C:\Users\MIB\Desktop\AccountSystemApplication\DAL\obj\Debug\DAL.pdb
+C:\Users\MIB\Desktop\AccountSystemApplication\DAL\bin\Debug\System.ValueTuple.dll
+C:\Users\MIB\Desktop\AccountSystemApplication\DAL\bin\Debug\System.ValueTuple.xml
+D:\work\csharp tries\AccountSystemDemo\DAL\bin\Debug\DAL.dll
+D:\work\csharp tries\AccountSystemDemo\DAL\bin\Debug\DAL.pdb
+D:\work\csharp tries\AccountSystemDemo\DAL\bin\Debug\DAL.Interface.dll
+D:\work\csharp tries\AccountSystemDemo\DAL\bin\Debug\Ninject.dll
+D:\work\csharp tries\AccountSystemDemo\DAL\bin\Debug\System.ValueTuple.dll
+D:\work\csharp tries\AccountSystemDemo\DAL\bin\Debug\DAL.Interface.pdb
+D:\work\csharp tries\AccountSystemDemo\DAL\bin\Debug\Ninject.xml
+D:\work\csharp tries\AccountSystemDemo\DAL\bin\Debug\System.ValueTuple.xml
+D:\work\csharp tries\AccountSystemDemo\DAL\obj\Debug\DAL.csprojAssemblyReference.cache
+D:\work\csharp tries\AccountSystemDemo\DAL\obj\Debug\DAL.csproj.CopyComplete
+D:\work\csharp tries\AccountSystemDemo\DAL\obj\Debug\DAL.dll
+D:\work\csharp tries\AccountSystemDemo\DAL\obj\Debug\DAL.pdb
