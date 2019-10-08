@@ -1,0 +1,1 @@
+Add a DAL implementation to the project for working with bank accounts (Homework. Day 15) using ORM ADO.NET Entity Framework. Develop console application. Make changes in solution (BLL, BLL.Interface, etc) if necessary.
